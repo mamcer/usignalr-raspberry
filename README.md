@@ -15,3 +15,9 @@ This POC ended as another fun project which left some initial experience develop
 Except the server all are web applications, they could be hosted in the same raspberry pi but where hosted in a Windows Server 2012. Only the server application ran in the raspberry pi. This application never left the POC status and for example doesn't have a Datastore in that context the angular application gets the data from a `songs.json` file.
 
 The server is configured to use mpg321 as the mp3 player and amixer to change the volume.
+
+## Branches
+
+In the `original-version` branch you will find the almost untouched original version of this application (originally it was divided in three different solutions).
+
+The `master` branch contains a reviewed version of the application with some little refactor included.

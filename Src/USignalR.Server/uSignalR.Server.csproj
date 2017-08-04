@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{25FA6E86-0D9D-4A71-B1AF-C823DBC1E3FE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>uSignalR.Server</RootNamespace>
+    <RootNamespace>USignalR.Server</RootNamespace>
     <AssemblyName>uSignalR.Server</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
