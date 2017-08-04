@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html ng-app='soulstoneClient'>
+<head>
+    <title>Soulstone</title>
+</head>
+<body ng-controller='SoulstoneController'>
+    <h1>Soulstone Client</h1>
+    <form ng-submit='search()'>
+        <input type='text' ng-model='search.text' />
+        <button>search</button>
+    </form>
+    <p>total songs: {{soulstone.songs.length}}</p>
+    <br />
+    <input type="button" value="stop" onclick="stop()" />
+    <input type="button" value="Volume Up" onclick="volumeUp()" />
+    <input type="button" value="Volume Down" onclick="volumeDown()" />
+    <br />
+    <table ng-show='soulstone.results.length'>
+        <tr>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>Title</th>
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat='song in soulstone.results'>
+            <td ng-bind='song.artist'></td>
+            <td ng-bind='song.album'></td>
+            <td ng-bind='song.title'></td>
+            <td><input type="button" value="play song" ng-click="playSong(song.mp3)" />
+        </tr>
+    </table>
+
+    <div id="container">
+        <ul id="field"></ul>
+    </div>
+
+    <script src='/lib/angular/angular.js'></script>
+    <script src='/js/controller.js'></script>
+    <script src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="lib/jquery/jquery.signalR-2.2.0.min.js"></script>
+    <script src="http://192.168.1.148:1453/signalr/hubs"></script>
+    <script type="text/javascript">
+
+        function play() {
+            hub.server.play($("#txtFileName").val());
+        }
+
+        function stop() {
+            hub.server.stop();
+        }
+
+        function volumeDown() {
+            hub.server.volumeDown();
+        }
+
+        function volumeUp() {
+            hub.server.volumeUp();
+        }
+    </script>
+</html>

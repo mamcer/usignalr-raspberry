@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <input type="text" id="txtFileName" value="" style="width:500px" />
+    <input type="button" value="play" onclick="play()" />
+    <br />
+    <br />
+    <input type="button" value="stop" onclick="stop()" />
+    <input type="button" value="Volume Up" onclick="volumeUp()" />
+    <input type="button" value="Volume Down" onclick="volumeDown()" />
+
+    <br />
+    <br />
+    <strong>Total: 3909 files</strong>
+    <br />
+    <br />
+
+    <a href="javascript:playSong('almafuerte_almafuerte_04_-se-vos.mp3')">Almafuerte - Se Vos</a><br />
+
+    <div id="container">
+        <ul id="field"></ul>
+    </div>
+
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="http://192.168.1.148:1453/signalr/hubs"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.connection.hub.url = "http://192.168.1.148:1453/signalr";
+
+            hub = $.connection.chatHub;
+
+            hub.client.send = function (data) {
+                $("#field").append("<li>" + data + "</li>");
+            }
+
+            $.connection.hub.start().done(function () {
+                hub.server.welcome();
+            });
+        });
+
+        function playSong(songName) {
+            hub.server.play(songName);
+        }
+
+        function play() {
+            hub.server.play($("#txtFileName").val());
+        }
+
+        function stop() {
+            hub.server.stop();
+        }
+
+        function volumeDown() {
+            hub.server.volumeDown();
+        }
+
+        function volumeUp() {
+            hub.server.volumeUp();
+        }
+    </script>
+</body>
+</html>
