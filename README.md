@@ -2,6 +2,8 @@
 
 An AngularJS and console application (that runs in a RaspberryPi) from 2015
 
+> More details about why I published this project in [this blog post](https://mamcer.github.io/2018-09-02-i-cleaned-up-my-virtual-basement/)
+
 ## Description
 
 Initially built in MonoDevelop 5.5 in 2015. Targeting a Raspberry Pi model B.
